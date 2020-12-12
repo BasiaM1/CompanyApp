@@ -49,15 +49,12 @@ exports.addNew = async (req, res) => {
 exports.change = async (req, res) => {
     const {name} = req.body;
     try {
-        await Department.findByIdAndUpdate(
+        const dep = await Department.findByIdAndUpdate(
             req.params.id,
             {$set: {name: name}},
-            {new: true},
-            (err, doc) => {
-                if (err) res.status(404).json({message: 'Not found...'});
-                else res.json(doc);
-            }
-        );
+            {new: true});
+        if (!dep) res.status(404).json({message: 'Not found'});
+        else res.json(dep);
     } catch (err) {
         res.status(500).json({message: err});
     }
