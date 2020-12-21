@@ -2,6 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../../server');
 const Department = require('../../../models/department.model');
+const mongoose = require('mongoose');
 
 chai.use(chaiHttp);
 
