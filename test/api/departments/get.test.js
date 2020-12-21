@@ -40,4 +40,7 @@ describe('GET /api/departments', () => {
     after(async () => {
         await Department.deleteMany();
     });
+    after(() => {
+        mongoose.models = {};
+    });
 });

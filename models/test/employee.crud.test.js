@@ -1,4 +1,4 @@
-const Employee = require('../Employee.model.js');
+const Employee = require('../employee.model.js');
 const expect = require('chai').expect;
 const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
 const mongoose = require('mongoose');
@@ -113,5 +113,8 @@ describe('Employee', () => {
             const employees = await Employee.find();
             expect(employees.length).to.be.equal(0);
         });
+    });
+    after(() => {
+        mongoose.models = {};
     });
 });

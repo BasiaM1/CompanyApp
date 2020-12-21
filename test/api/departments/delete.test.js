@@ -26,4 +26,7 @@ describe('DELETE /api/departments', () => {
     after(async () => {
         await Department.deleteMany();
     });
+    after(() => {
+        mongoose.models = {};
+    });
 });

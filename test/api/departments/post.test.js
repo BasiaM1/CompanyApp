@@ -1,6 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('../../../server.js');
+const server = require('../../../server');
 const Department = require('../../../models/department.model');
 
 chai.use(chaiHttp);
@@ -19,5 +19,8 @@ describe('POST /api/departments', () => {
     });
     after(async () => {
         await Department.deleteMany();
+    });
+    after(() => {
+        mongoose.models = {};
     });
 });

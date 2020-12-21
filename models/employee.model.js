@@ -6,4 +6,4 @@ const employeesSchema = new mongoose.Schema({
     department: {type: String, required: true, minlength: 2, maxlength: 20, ref: 'Department'}
 });
 
-module.exports = mongoose.model('Employee', employeesSchema);
+module.exports = mongoose.models.Employee || mongoose.model('Employee', employeesSchema);
